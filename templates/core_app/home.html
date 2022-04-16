@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>
+        Home Page
+    </title>
+</head>
+
+<body>
+    <center>
+        <h1> Webapp by Rahul </h1>
+    </center>
+    <a href="{% url 'user_logout' %}" >Logout Here</a>
+    <br><br>
+
+    Username: {{ userRecord.user.username }}
+    <br>
+    First Name: {{ userRecord.first_name }}
+    <br>
+    Last Name: {{ userRecord.last_name }}
+    <br>
+    Email: {{ userRecord.email }}
+    <br>
+    Role: {{ userRecord.role}}
+    <br>
+    Address: {{ userRecord.address.address_line1 }}, {{ userRecord.address.city }}, {{ userRecord.address.state }}, {{ userRecord.address.pincode}}
+
+
+</body>
+
+</html>
