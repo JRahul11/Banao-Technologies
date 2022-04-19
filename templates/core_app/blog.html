@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/body.css' %}">
+<link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" />
+<link href="{% static 'css/core_style.css' %}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %} Blog Page {% endblock %}
+
+{%block content %}
+<div class="section">
+    <h4 style="margin-left: 30px;"> Title: {{ blog.title }}</h4>
+    <br>
+    <h6 style="margin-left: 30px;"> Summary: {{ blog.summary }}</h6>
+    <br>
+    <h6 style="font-weight: lighter; margin-left: 30px;"> Author: {{ blog.user.user.username }}</h6>
+    <br>
+    <h6 style="font-weight: lighter; margin-left: 30px;"> Posted on: {{ blog.date }}</h6>
+    <br>
+    <div style="margin-left: 30px;">
+        Content:
+        {{ blog.content }}
+    </div>
+</div>
+{% endblock %}

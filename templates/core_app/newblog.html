@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Responsive Contact us Form | CodingNepal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Responsive Contact us Form</div>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    {{ blogform.title }}
+                    <div class="underline"></div>
+                    <label for="">Title</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <select name="category" style="width: 320px; height: 38px">
+                        <option style="font-size: 12pxpx">Select Category</option>
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Heart Disease">Heart Disease</option>
+                        <option value="Covid19">Covid19</option>
+                        <option value="Immunization">Immunization</option>
+                    </select>
+                </div>
+                <div class="input-data">
+                    {{ blogform.image }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    {{ blogform.summary }}
+                    <div class="underline"></div>
+                    <label for="">Summary</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    {{ blogform.content }}
+                    <div class="underline"></div>
+                    <label for="">Content</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div >
+                    <input type="checkbox" name="isdraft" value="True">
+                    <label for="">Save as Draft</label>
+                </div>
+            </div>
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" name="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

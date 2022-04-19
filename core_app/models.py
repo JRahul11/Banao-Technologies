@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 
 class Address(models.Model):
@@ -14,6 +15,7 @@ class Address(models.Model):
     class Meta:
         verbose_name_plural = "Address"
         db_table = "Address"
+
 
 class UserModel(models.Model):
     USER_ROLE = (
@@ -31,10 +33,32 @@ class UserModel(models.Model):
     
     
     def __str__(self):
-        return self.username
+        return self.user.username
     
     class Meta:
         verbose_name_plural = "User"
         db_table = "User"
+
+
+class BlogModel(models.Model):
+    CATEGORIES = (
+        ('Mental Health', 'Mental Health'),
+        ('Heart Disease', 'Heart Disease'),
+        ('Covid19', 'Covid19'),
+        ('Immunization ', 'Immunization')
+    )
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ImageField(upload_to='blogPictures', default=None, blank=True)
+    category = models.CharField(max_length=100, choices=CATEGORIES, null=True, blank=True)
+    summary = models.CharField(max_length=500, null=True, blank=True)
+    content = models.TextField(max_length=5000, null=True, blank=True)
+    isdraft = models.BooleanField(default=False, null=True, blank=True)
+    date = models.DateTimeField(default=now)
     
-    
+    def __str__(self):
+        return self.user.first_name
+
+    class Meta:
+        verbose_name_plural = "Blog"
+        db_table = "Blog"

@@ -9,13 +9,11 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username, password)
         try:
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
-        except Exception as e:
-            print(e)
+        except:
             context = {
                 'error': True,
                 'error_msg': 'Check Credentials'

@@ -53,23 +53,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'banao_project.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'banao_db',                                   # Database name
-#         'USER': 'postgres',                                         # Postgres username
-#         'PASSWORD': 'abc456',                                       # Postgres password
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',                                             # Postgres port
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'banao_technologies_db',
+        'USER': 'root',  # Change this to your username
+        'PASSWORD': 'abc456',  # Change this to your password
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -88,7 +88,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True

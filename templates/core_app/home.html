@@ -1,33 +1,46 @@
-<html>
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <title>
-        Home Page
-    </title>
-</head>
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/body.css' %}">
+<link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" />
+<link href="{% static 'css/core_style.css' %}" type="text/css" rel="stylesheet" />
+{% endblock %}
 
-<body>
-    <center>
-        <h1> Webapp by Rahul </h1>
-    </center>
-    <a href="{% url 'user_logout' %}" >Logout Here</a>
-    <br><br>
+{% block title %} Home Page {% endblock %}
 
-    Username: {{ userRecord.user.username }}
-    <br>
-    First Name: {{ userRecord.first_name }}
-    <br>
-    Last Name: {{ userRecord.last_name }}
-    <br>
-    Email: {{ userRecord.email_id }}
-    <br>
-    Role: {{ userRecord.role}}
-    <br>
-    Address: {{ userRecord.address.address_line1 }}, {{ userRecord.address.city }}, {{ userRecord.address.state }}, {{ userRecord.address.pincode}}
-    <br>
-    Profile Picture Path: {{ userRecord.profile_picture.url}}
+{%block content %}
 
+<div class="dropdown" style="float: right; margin-top:100px; margin-right: 80px">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false" style="background-color: #262626">Sort</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+            <a class="dropdown-item" href="{% url 'sortCategories' 1 %}">Mental Health</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'sortCategories' 2 %}">Heart Disease</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'sortCategories' 3 %}">Covid19</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'sortCategories' 4 %}">Immunization</a>
+        </li>
+    </ul>
+</div>
 
-</body>
+<h3 style="text-align: center; margin-left: 150px;">Recent Blogs</h3>
+<div class="section">
+    {% for blog in blogs %}
+        <h4 style="margin-left:130px"><a href="{% url 'blog' blog.id %}" style="color: black">{{ blog.title }}</a></h4>
+        <img src={{ blog.image.url }} style="width:70px;height:70px;margin-left:1000px"></div>
+        <h6 style="margin-left:130px">{{ blog.summary }}</h6>
+        <h6 style="font-weight: lighter; margin-left:130px">Posted on {{ blog.date }}</h6>
+        <br>
+        <div class="divider"></div>
+    {% endfor %}
+</div>
 
-</html>
+{% endblock %}
