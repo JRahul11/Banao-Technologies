@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/body.css' %}">
+<link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" />
+<link href="{% static 'css/core_style.css' %}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %} Doctors Page {% endblock %}
+
+{%block content %}
+
+<h3 style="text-align: center;">Available Doctors</h3>
+<div class="section">
+    {% for doctor in doctors %}
+        <h4 style="margin-left:130px">{{ doctor.first_name }} {{ doctor.last_name }}</h4>
+        <img src={{ doctor.profile_picture.url }} style="width:70px;height:70px;margin-left:1000px"></div>
+        <a class=" btn" style="margin-left:130px;" href="{% url 'bookAppointment' doctor.id %}" >Book Appointment</a>
+        <br>
+        <br>
+        <div class="divider"></div>
+    {% endfor %}
+</div>
+
+{% endblock %}

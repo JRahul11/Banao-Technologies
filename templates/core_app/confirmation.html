@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/body.css' %}">
+<link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" />
+<link href="{% static 'css/core_style.css' %}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %} Confirmation Page {% endblock %}
+
+{%block content %}
+<div class="section">
+    <h4 style="margin-left: 30px;"> Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</h4>
+    <br>
+    <br>
+    <h6 style="font-weight: lighter; margin-left: 30px;"> Appointment Date: {{ appointment.date }}</h6>
+    <br>
+    <h6 style="font-weight: lighter; margin-left: 30px;"> Start Time: {{ appointment.start_time }}</h6>
+    <br>
+    <h6 style="font-weight: lighter; margin-left: 30px;"> End Time: {{ appointment.end_time }}</h6>    
+</div>
+{% endblock %}

@@ -57,6 +57,11 @@
             <nav>
                 <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
                 <ul class="nav-list">
+                    {% if patient == True %}
+                    <li>
+                        <a href="{% url 'doctors' %}">Book Appointment</a>
+                    </li>
+                    {% endif %}
                     {% if doctor == True %}
                     <li>
                         <a href="{% url 'newblog' %}">Create New Blog</a>

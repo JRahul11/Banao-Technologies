@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>New Appointment Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">New Appointment Form</div>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    <input name="speciality" type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Speciality</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input name="date" type="date" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="input-data">
+                    <input name="start_time" type="time" required>
+                    <div class="underline"></div>
+                </div>
+            </div>
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" name="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

@@ -3,3 +3,5 @@ django-cors-headers
 pillow
 gunicorn
 whitenoise
+google-api-python-client
+google-auth-oauthlib

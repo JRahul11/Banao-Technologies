@@ -62,3 +62,19 @@ class BlogModel(models.Model):
     class Meta:
         verbose_name_plural = "Blog"
         db_table = "Blog"
+
+
+class Appointment(models.Model):
+    patient = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name="patient")
+    doctor = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name="doctor")
+    speciality = models.CharField(max_length=100, null=True, blank=True)
+    date = models.CharField(max_length=100, null=True, blank=True)
+    start_time = models.CharField(max_length=100, null=True, blank=True)
+    end_time = models.CharField(max_length=100, null=True, blank=True)
+    
+    def __str__(self):
+        return self.patient.first_name + ' ' + self.doctor.first_name
+    
+    class Meta:
+        verbose_name_plural = "Appointment"
+        db_table = "Appointment"

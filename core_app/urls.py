@@ -10,5 +10,9 @@ urlpatterns = [
     path('sortCategories/<id>', sortCategories, name='sortCategories'),
     
     path('blog/<id>', blog, name='blog'),
+    
+    path('doctors/', doctors, name='doctors'),
+    
+    path('bookAppointment/<id>', bookAppointment, name='bookAppointment'),
 
 ]
